@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #F8F8FF;
+  font-size: 1.2em;
+}
+
+.btnAddTask {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #ADD8E6;
+}
+.btnAddTask:hover {
+  background-color: #FFFFF0;
+}

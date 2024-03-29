@@ -1,0 +1,6 @@
+Branco Suave: #F8F8FF
+Bege Sutil: #FAEBD7
+Azul Clássico: #ADD8E6
+Rosa Vintage: #F4CCCC
+Verde Harmonioso: #C9E2C7
+Marfim Elegante: #FFFFF0

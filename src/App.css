@@ -1,0 +1,11 @@
+* {
+  font-size: 1em;
+  font-family: 'Arial';
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #333333;
+}

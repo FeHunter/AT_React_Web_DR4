@@ -1,0 +1,49 @@
+.card {
+  width: 90%;
+  height: 140px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 80% 20%;
+  grid-template-areas: 'infos' 'buttons';
+  flex-direction: column;
+  background-color: #C9E2C7;
+  margin: 20px 0px;
+  padding: 5px;
+}
+
+.infos {
+  grid-area: infos;
+  display: flex;
+  flex-direction: column;
+}
+
+.infos h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.infos .id {
+  font-style: italic;
+  color: #FFFFF0;
+  text-align: right;
+}
+
+.buttons {
+  grid-area: buttons;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8F8FF;
+  padding: 2px;
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+}
+.button:hover {
+  cursor: pointer;
+}
