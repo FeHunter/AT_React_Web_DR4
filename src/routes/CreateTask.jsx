@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Header } from "../components/Header/Header";
@@ -8,6 +9,9 @@ import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export function CreateTask() {
+
+  const navigate = useNavigate();
+
   const api = "https://pacaro-tarefas.netlify.app/api/felipe-rodrigues";
   const tasks = "/tasks";
 
@@ -53,6 +57,7 @@ export function CreateTask() {
     try {
       const response = await axios.post(`${api}${tasks}`, task);
       console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }
