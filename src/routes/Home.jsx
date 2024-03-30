@@ -7,7 +7,8 @@ import axios from "axios";
 export function Home() {
 
   // https://pacaro-tarefas.netlify.app/api/eduardo/tasks
-  const api = "https://pacaro-tarefas.netlify.app/api/eduardo/";
+  const user = "felipe-rodrigues"
+  const api = `https://pacaro-tarefas.netlify.app/api/${user}/`;
   const tasks = "tasks";
 
   const [toDo, setToDo] = useState([]);

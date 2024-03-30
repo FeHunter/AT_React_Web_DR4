@@ -13,7 +13,8 @@ export function CreateTask() {
   const navigate = useNavigate();
 
   // https://pacaro-tarefas.netlify.app/api/eduardo/tasks
-  const api = "https://pacaro-tarefas.netlify.app/api/eduardo/";
+  const user = "felipe-rodrigues"
+  const api = `https://pacaro-tarefas.netlify.app/api/${user}/`;
   const tasks = "tasks";
 
   const [tasksList, setTasksList] = useState([]);
@@ -31,8 +32,8 @@ export function CreateTask() {
   const stepSchema = yup
     .string()
     .matches(
-      /A fazer|Em andamento|Pronto/,
-      'Os passos devem ser "Para fazer", "Em andamento" ou "Pronto"',
+      /Para fazer|Em andamento|Pronto/,
+      'Os passos devem ser "ParPara fazer", "Em andamento" ou "Pronto"',
     );
   const validateSchema = yup.object({
     title: yup
@@ -57,17 +58,18 @@ export function CreateTask() {
       step: values.step,
     };
     try {
-      // const response = await axios.post(`${api}${tasks}`, task);
-      fetch(`${api}${task}`, {
-        method: 'post',
-        body: JSON.stringify(task),
-      })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+      const response = await axios.post(`${api}${tasks}`, task);
+      // fetch(`${api}${task}`, {
+      //   method: 'post',
+      //   body: JSON.stringify(task),
+      // })
+      // .then(res => {
+      //   console.log(res);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // })
+      console.log(response);
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -78,9 +80,11 @@ export function CreateTask() {
     <div className={style.container}>
       <Header />
       <Formik
-        initialValues={{ title: "", description: "", step: "A fazer" }}
+        initialValues={{ createdAt: "", title: "", description: "", step: "Para fazer", user: user, id: "" }}
         validationSchema={validateSchema}
         onSubmit={(values) => {
+          values.createdAt = new Date().toISOString();
+          values.id = (Math.random()*1000).toFixed(1);
           sendData(values);
         }}
       >
@@ -113,7 +117,7 @@ export function CreateTask() {
           </div>
           <div className={style.inputCard}>
             <Field as="select" name="step" className={style.input}>
-              <option value="A fazer">A fazer</option>
+              <option value="Para fazer">Para fazer</option>
               <option value="Em andamento">Em Andamento</option>
               <option value="Pronto">Pronto</option>
             </Field>
