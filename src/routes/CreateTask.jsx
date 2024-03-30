@@ -12,8 +12,9 @@ export function CreateTask() {
 
   const navigate = useNavigate();
 
-  const api = "https://pacaro-tarefas.netlify.app/api/felipe-rodrigues";
-  const tasks = "/tasks";
+  // https://pacaro-tarefas.netlify.app/api/eduardo/tasks
+  const api = "https://pacaro-tarefas.netlify.app/api/eduardo/";
+  const tasks = "tasks";
 
   const [tasksList, setTasksList] = useState([]);
 
@@ -30,7 +31,7 @@ export function CreateTask() {
   const stepSchema = yup
     .string()
     .matches(
-      /Para fazer|Em andamento|Pronto/,
+      /A fazer|Em andamento|Pronto/,
       'Os passos devem ser "Para fazer", "Em andamento" ou "Pronto"',
     );
   const validateSchema = yup.object({
@@ -48,15 +49,25 @@ export function CreateTask() {
   });
 
   const sendData = async (values) => {
+    console.log(values);
     const task = {
-      id: `${values.title}_${tasksList.length}`,
+      // id: `${values.title}_${(Math.random()*100).toFixed(1)}`,
       title: values.title,
       description: values.description,
       step: values.step,
     };
     try {
-      const response = await axios.post(`${api}${tasks}`, task);
-      console.log(response.data);
+      // const response = await axios.post(`${api}${tasks}`, task);
+      fetch(`${api}${task}`, {
+        method: 'post',
+        body: JSON.stringify(task),
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      })
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -67,7 +78,7 @@ export function CreateTask() {
     <div className={style.container}>
       <Header />
       <Formik
-        initialValues={{ title: "", description: "", step: "" }}
+        initialValues={{ title: "", description: "", step: "A fazer" }}
         validationSchema={validateSchema}
         onSubmit={(values) => {
           sendData(values);
@@ -102,7 +113,7 @@ export function CreateTask() {
           </div>
           <div className={style.inputCard}>
             <Field as="select" name="step" className={style.input}>
-              <option value="Para fazer">A fazer</option>
+              <option value="A fazer">A fazer</option>
               <option value="Em andamento">Em Andamento</option>
               <option value="Pronto">Pronto</option>
             </Field>

@@ -6,16 +6,16 @@ export function TaskCard({ task, stepLeft, stepRight, deleteTask }) {
       <span className={style.infos}>
         <p className={style.id}>#{task.id}</p>
         <h2>{task?.title}</h2>
-        <p>{task?.discription}</p>
+        <p>{task?.description}</p>
       </span>
       <span className={style.buttons}>
-        {task.step === "A Fazer" && (
+        {task.step === "Para fazer" && (
           // Move para direita
           <span className={style.button} onClick={stepRight}>
             <i class="fa-solid fa-right-long"></i>
           </span>
         )}
-        {task.step === "Em Andamento" && (
+        {task.step === "Em andamento" && (
           // Move dereita e esquerda
           <>
             <span className={style.button} onClick={stepLeft}>
