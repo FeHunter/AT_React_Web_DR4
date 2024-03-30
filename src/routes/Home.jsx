@@ -71,6 +71,21 @@ export function Home() {
     }
     console.log('Movendo para Direita');
   };
+
+  const removerTask = (task) => {
+    let updatelist;
+    switch(task.step){
+      case "A Fazer":
+        updatelist = toDo.filter((t) => t.id !== task.id);
+        setToDo(updatelist);
+      case "Em Andamento":
+        updatelist = doing.filter((t) => t.id !== task.id);
+        setDoing(updatelist);
+      case "Pronto":
+        updatelist = done.filter((t) => t.id !== task.id);
+        setDone(updatelist);
+    }
+  };
   
 
   return (
@@ -86,6 +101,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                deleteTask={()=> removerTask(task)}
               />
             ))
           ) : ''
@@ -100,6 +116,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                deleteTask={()=> removerTask(task)}
               />
             ))
           ) : ''
@@ -114,6 +131,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                deleteTask={()=> removerTask(task)}
               />
             ))
           ) : ''
