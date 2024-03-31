@@ -50,37 +50,25 @@ export function Home() {
     }
   };
 
-  const addTask = (title, description, step) => {
-    const task = {
-      id: (Math.random()*100).toFixed(0),
-      title: title,
-      description: description,
-      step: step,
-    };
-    switch (step) {
-      case "Para fazer":
-        setToDo([...toDo, task]);
-        break;
-      case "Em andamento":
-        setDoing([...doing, task]);
-        break;
-      case "Pronto":
-        setDone([...done, task]);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const changeStepLeft = (task) => {
+  const changeStepLeft = async (task) => {
     let updatedTasks;
     switch (task.step) {
       case "Pronto":
+        // Salvar estado da alteração
+        try {
+          await axios.put(`${api}${tasks}/${task.id}`, {... task, step: "Em andamento"});
+        }catch(error){ console.log(error.message) }
+        // Fazer alteração local
         updatedTasks = done.filter((t) => t.id !== task.id);
         setDone(updatedTasks);
         setDoing([...doing, { ...task, step: "Em andamento" }]);
         break;
       case "Em andamento":
+        // Salvar estado da alteração
+        try {
+          await axios.put(`${api}${tasks}/${task.id}`, {... task, step: "Para fazer"});
+        }catch(error){ console.log(error.message) }
+        // Fazer alteração local
         updatedTasks = doing.filter((t) => t.id !== task.id);
         setDoing(updatedTasks);
         setToDo([...toDo, { ...task, step: "Para fazer" }]);
@@ -91,15 +79,25 @@ export function Home() {
     console.log('Movendo para Esquerda');
   };
 
-  const changeStepRight = (task) => {
+  const changeStepRight = async (task) => {
     let updatedTasks;
     switch (task.step) {
       case "Para fazer":
+        // Salvar estado da alteração
+        try {
+          await axios.put(`${api}${tasks}/${task.id}`, {... task, step: "Em andamento"});
+        }catch(error){ console.log(error.message) }
+        // Fazer alteração local
         updatedTasks = toDo.filter((t) => t.id !== task.id);
         setToDo(updatedTasks);
         setDoing([...doing, { ...task, step: "Em andamento" }]);
         break;
       case "Em andamento":
+        // Salvar estado da alteração
+        try {
+          await axios.put(`${api}${tasks}/${task.id}`, {... task, step: "Pronto"});
+        }catch(error){ console.log(error.message) }
+        // Fazer alteração local
         updatedTasks = doing.filter((t) => t.id !== task.id);
         setDoing(updatedTasks);
         setDone([...done, { ...task, step: "Pronto" }]);
@@ -110,8 +108,9 @@ export function Home() {
     console.log('Movendo para Direita');
   };
 
-  const removerTask = (task) => {
+  const removerTask = async (task) => {
     let updatelist;
+    await axios.delete(`${api}${tasks}/${task.id}`);
     switch(task.step){
       case "Para fazer":
         updatelist = toDo.filter((t) => t.id !== task.id);
@@ -176,14 +175,6 @@ export function Home() {
           }
         </div>
       </div>
-      <button
-        onClick={() => {
-          addTask(`Test`, `descrição${toDo.length}`, "Para fazer");
-        }}
-        style={{ padding: "10px", backgroundColor: "gray" }}
-      >
-        Adicionar Tarefa
-      </button>
     </div>
   );
 }

@@ -50,25 +50,13 @@ export function CreateTask() {
   });
 
   const sendData = async (values) => {
-    console.log(values);
     const task = {
-      // id: `${values.title}_${(Math.random()*100).toFixed(1)}`,
       title: values.title,
       description: values.description,
       step: values.step,
     };
     try {
       const response = await axios.post(`${api}${tasks}`, task);
-      // fetch(`${api}${task}`, {
-      //   method: 'post',
-      //   body: JSON.stringify(task),
-      // })
-      // .then(res => {
-      //   console.log(res);
-      // })
-      // .catch(error => {
-      //   console.log(error);
-      // })
       console.log(response);
       navigate("/");
     } catch (error) {
