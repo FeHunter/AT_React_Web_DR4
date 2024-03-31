@@ -66,26 +66,10 @@ export function EditTask() {
   class LoadAPI extends Component {
     constructor(props){
       super(props);
-      this.state = { task: props.task }
-      this.api = props.api;
-      this.apiSource = props.task;
-      this.taskId = props.taskId;
     }
-    api;
-    apiSource;
-    taskId;
     
     componentDidMount(){
       load();
-    }
-
-    load = async ()=> {
-      try{
-        const requset = await axios.get(`${this.api}${this.apiSource}/${this.taskId}`);
-        this.setState({ task:  requset.data });
-      }catch(error){
-        console.log(error.message);
-      }
     }
 
     render(){
@@ -96,8 +80,8 @@ export function EditTask() {
   return (
     <div className={style.container}>
       
-      {/* Componente de classe usando o ( componentDidMount ) e ( setState ) */}
-      <LoadAPI/>
+      {/* Componente de classe usando o ( componentDidMount ) */}
+      <LoadAPI />
 
       <Header />
       <Formik
