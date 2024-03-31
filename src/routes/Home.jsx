@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import style from "./Home.module.css";
 import { Header } from "../components/Header/Header";
 import { TaskCard } from "../components/TaskBoard/TaskCard/TaskCard";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Home() {
+
+  const navigate = useNavigate();
 
   // https://pacaro-tarefas.netlify.app/api/eduardo/tasks
   const user = "felipe-rodrigues"
@@ -123,6 +126,11 @@ export function Home() {
         setDone(updatelist);
     }
   };
+
+  const editTask = (task)=>{
+    const id = task.id;
+    navigate('/CreateTask', {state: { id }});
+  }
   
 
   return (
@@ -138,6 +146,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))
@@ -153,6 +162,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))
@@ -168,6 +178,7 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
+                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))

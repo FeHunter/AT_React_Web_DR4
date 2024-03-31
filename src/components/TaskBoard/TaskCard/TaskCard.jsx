@@ -1,6 +1,11 @@
 import style from "./TaskCard.module.css";
 
-export function TaskCard({ task, stepLeft, stepRight, deleteTask }) {
+export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
+
+  const edit = () => {
+    editTask(task);
+  }
+
   return (
     <div className={style.card}>
       <span className={style.infos}>
@@ -33,7 +38,7 @@ export function TaskCard({ task, stepLeft, stepRight, deleteTask }) {
           </span>
           
         )}
-        <button className={style.button}>Editar</button>
+        <button className={style.button} onClick={edit}>Editar</button>
         <button className={style.button} onClick={deleteTask}>Deletar</button>
       </span>
     </div>
