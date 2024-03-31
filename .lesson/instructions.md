@@ -105,9 +105,9 @@ No caso desta disciplina, são quatro competências com quatro itens de rubrica 
 
 ## Desenvolver aplicações que respondam à eventos com a atualização da interface
 
-#### AT 1: Criar e utilizar ao menos um componente de classe;
+#### AT 1: Criar e utilizar ao menos um componente de classe; [ok]
 #### AT 2: Utilizar ao menos um `setState` em um componente de classe; [ok]
-#### AT 3: Utilizar ao menos uma vez o método de ciclo de vida `componentDidMount` em um componente de classe;
+#### AT 3: Utilizar ao menos uma vez o método de ciclo de vida `componentDidMount` em um componente de classe; [ok]
 #### AT 4: Utilizar ao menos uma vez o método de ciclo de vida `componentDidUpdate` em um componente de classe.
 
 ## Desenvolver componentes usando React Hooks
@@ -239,7 +239,7 @@ const done = tasks.filter((task) => task.step === "Pronto");
 
 Essa rota deve renderizar o formulário de criação de tarefas.
 
-### AT 15: Criar a rota `/editar-tarefa/:id`
+### AT 15: Criar a rota `/editar-tarefa/:id` [ok]
 
 Essa rota deve editar uma tarefa pelo ID. Na rota `/`, ao clicar no botão de editar tarefa, o ID deve ser enviado pela URL. Utilize o hook `useParams` para realizar a requisição da tarefa na API e assim preencher o formulário com os valores do back-end.
 

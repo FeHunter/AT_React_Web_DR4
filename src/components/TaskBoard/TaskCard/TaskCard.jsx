@@ -1,10 +1,30 @@
 import { Link } from "react-router-dom";
 import style from "./TaskCard.module.css";
+import { Component } from "react";
 
 export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
 
   const edit = () => {
     editTask(task);
+  }
+
+  // Botão - Componente de classe
+  class DeleteButton extends Component {
+    constructor(props) {
+      super(props);
+      this.callFunction = props.callFunction;
+    }
+    callFunction;
+
+    activeFunction = ()=>{
+      this.callFunction();
+    }
+    
+    render(){
+      return(
+        <button className={style.button} onClick={this.activeFunction}>Deletar</button>
+      );
+    }
   }
 
   return (
@@ -42,7 +62,7 @@ export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
         <Link to={`/editar-tarefa/${task.id}`}>
           <button className={style.button}>Editar</button> 
         </Link>
-        <button className={style.button} onClick={deleteTask}>Deletar</button>
+        <DeleteButton  callFunction={deleteTask} />
       </span>
     </div>
   );

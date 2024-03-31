@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import style from "./Home.module.css";
 import { Header } from "../components/Header/Header";
 import { TaskCard } from "../components/TaskBoard/TaskCard/TaskCard";
@@ -133,7 +133,6 @@ export function Home() {
     toast(`A tarefa #${task.id} foi deletada com sucesso!`);
   };
   
-
   return (
     <div className={style.container}>
       <Header />

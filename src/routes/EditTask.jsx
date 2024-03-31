@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Header } from "../components/Header/Header";
 import style from "./EditTask.module.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Component, useState } from "react";
 import toast from "react-simple-toasts";
 import { TextField } from "../components/Form/Input/TextField";
 import { SelectOption } from "../components/Form/Select/SelectOption";
@@ -26,11 +26,6 @@ export function EditTask() {
     step: "",
     id: ""
   });
-
-  useEffect(() => {
-    load();
-  }, []);
-
   const load = async () => {
     const taskId = id;
     const request = await axios.get(`${api}${tasks}/${taskId}`);
@@ -68,8 +63,42 @@ export function EditTask() {
     }
   };
 
+  class LoadAPI extends Component {
+    constructor(props){
+      super(props);
+      this.state = { task: props.task }
+      this.api = props.api;
+      this.apiSource = props.task;
+      this.taskId = props.taskId;
+    }
+    api;
+    apiSource;
+    taskId;
+    
+    componentDidMount(){
+      load();
+    }
+
+    load = async ()=> {
+      try{
+        const requset = await axios.get(`${this.api}${this.apiSource}/${this.taskId}`);
+        this.setState({ task:  requset.data });
+      }catch(error){
+        console.log(error.message);
+      }
+    }
+
+    render(){
+      return null;
+    }
+  }
+
   return (
     <div className={style.container}>
+      
+      {/* Componente de classe usando o ( componentDidMount ) e ( setState ) */}
+      <LoadAPI/>
+
       <Header />
       <Formik
         initialValues={task}
