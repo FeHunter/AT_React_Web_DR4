@@ -5,14 +5,12 @@ import * as yup from "yup";
 import { Header } from "../components/Header/Header";
 import style from "./CreateTask.module.css";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast from "react-simple-toasts";
 
 export function CreateTask() {
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   // https://pacaro-tarefas.netlify.app/api/eduardo/tasks
   const user = "felipe-rodrigues"
@@ -20,23 +18,13 @@ export function CreateTask() {
   const tasks = "tasks";
 
   const [tasksList, setTasksList] = useState([]);
-  const [editTaskId, setEditTaskId] = useState(null);
 
   useEffect(() => {
-    // Verificar se recebeu o ID de alguma tarefa, se sim não ira criar uma nova, mas sim altera a já existente informada.
-    if (location.state && location.state.taskId) {
-      setEditTaskId(location.state.taskId);
-    }
-
     load();
-    
   }, []);
 
   const load = async () => {
-    if (editTaskId === null){
-      // carrega todas as tarefas
-      const request = await axios.get(`${api}${tasks}`);
-    }
+    const request = await axios.get(`${api}${tasks}`);
     console.log(request.data);
     setTasksList(request.data);
   };
@@ -68,13 +56,8 @@ export function CreateTask() {
       step: values.step,
     };
     try {
-      if (editTaskId === null){
-        // Criar nova tarefa
-        await axios.post(`${api}${tasks}`, task);
-      }else {
-        // Altera tarefa existente
-        await axios.post(`${api}${tasks}/${editTaskId}`, task);
-      }
+      await axios.post(`${api}${tasks}`, task);
+      toast("Tarefa criada com sucesso!");
       navigate("/");
     } catch (error) {
       console.log(error.message);

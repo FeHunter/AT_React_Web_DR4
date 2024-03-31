@@ -3,6 +3,7 @@ import style from "./Home.module.css";
 import { Header } from "../components/Header/Header";
 import { TaskCard } from "../components/TaskBoard/TaskCard/TaskCard";
 import { useNavigate } from "react-router-dom";
+import toast from "react-simple-toasts";
 import axios from "axios";
 
 export function Home() {
@@ -65,6 +66,7 @@ export function Home() {
         updatedTasks = done.filter((t) => t.id !== task.id);
         setDone(updatedTasks);
         setDoing([...doing, { ...task, step: "Em andamento" }]);
+        toast(`Tarefa #${task.id} movida para "Em andamento"`);
         break;
       case "Em andamento":
         // Salvar estado da alteração
@@ -75,6 +77,7 @@ export function Home() {
         updatedTasks = doing.filter((t) => t.id !== task.id);
         setDoing(updatedTasks);
         setToDo([...toDo, { ...task, step: "Para fazer" }]);
+        toast(`Tarefa #${task.id} movida para "Para fazer"`);
         break;
       default:
         break;
@@ -94,6 +97,7 @@ export function Home() {
         updatedTasks = toDo.filter((t) => t.id !== task.id);
         setToDo(updatedTasks);
         setDoing([...doing, { ...task, step: "Em andamento" }]);
+        toast(`Tarefa #${task.id} movida para "Em andamento"`);
         break;
       case "Em andamento":
         // Salvar estado da alteração
@@ -104,6 +108,7 @@ export function Home() {
         updatedTasks = doing.filter((t) => t.id !== task.id);
         setDoing(updatedTasks);
         setDone([...done, { ...task, step: "Pronto" }]);
+        toast(`Tarefa #${task.id} movida para "Pronto"`);
         break;
       default:
         break;
@@ -125,11 +130,12 @@ export function Home() {
         updatelist = done.filter((t) => t.id !== task.id);
         setDone(updatelist);
     }
+    toast(`A tarefa #${task.id} foi deletada com sucesso!`);
   };
 
   const editTask = (task)=>{
     const id = task.id;
-    navigate('/CreateTask', {state: { id }});
+    navigate('/EditTask', {state: { id }});
   }
   
 
