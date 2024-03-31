@@ -106,22 +106,24 @@ No caso desta disciplina, são quatro competências com quatro itens de rubrica 
 ## Desenvolver aplicações que respondam à eventos com a atualização da interface
 
 #### AT 1: Criar e utilizar ao menos um componente de classe;
-#### AT 2: Utilizar ao menos um `setState` em um componente de classe;
+#### AT 2: Utilizar ao menos um `setState` em um componente de classe; [ok]
 #### AT 3: Utilizar ao menos uma vez o método de ciclo de vida `componentDidMount` em um componente de classe;
 #### AT 4: Utilizar ao menos uma vez o método de ciclo de vida `componentDidUpdate` em um componente de classe.
 
 ## Desenvolver componentes usando React Hooks
 
-#### AT 5: Utilizar o hook `useState` ao menos uma vez;
-#### AT 6: Utilizar o hook `useEffect` ao menos uma vez;
-#### AT 7: Criar ao menos cinco componentes na aplicação. **ISSO NÃO INCLUI AS ROTAS**. Exemplos de possíveis componentes são `Button`, `TaskCard`, `ButtonLink`, `TextField`, `Select`, `ErrorText`, etc;
-#### AT 8: Estilizar a aplicação com qualquer tecnologia.
+#### AT 5: Utilizar o hook `useState` ao menos uma vez; [ok]
 
-## Criar formulários web usando componentes ReactJS
+#### AT 6: Utilizar o hook `useEffect` ao menos uma vez; [ok]
 
-### AT 9: Implementar o formulário de criação de tarefa utilizando Formik.
+#### AT 7: Criar ao menos cinco componentes na aplicação. [ok]
+**ISSO NÃO INCLUI AS ROTAS**. Exemplos de possíveis componentes são `Button`, `TaskCard`, `ButtonLink`, `TextField`, `Select`, `ErrorText`, etc;
+
+#### AT 8: Estilizar a aplicação com qualquer tecnologia. [ok]
+
+### AT 9: Implementar o formulário de criação de tarefa utilizando Formik. [ok]
 Você deve exibir os erros e enviar os dados pela API ao pressionar o botão de enviar caso esteja tudo certo.
-### AT 10: Implementar o formulário de edição de tarefa utilizando Formik.
+### AT 10: Implementar o formulário de edição de tarefa utilizando Formik. [ok]
 Você deve exibir os erros e enviar os dados pela API ao pressionar o botão de enviar caso esteja tudo certo.
 
 **UTILIZAR O SEGUINTE SCHEMA NOS ATS 9 e 10. NÃO ESQUEÇA DE IMPORTAR O `yup`!**
@@ -187,7 +189,7 @@ const taskSchema = yup.object({
 </fieldset>
 ```
 
-### AT 11: Implementar o botão de deletar tarefa.
+### AT 11: Implementar o botão de deletar tarefa. [ok]
 
 Esse botão deve se comunicar com a API e atualizar a tela com as alterações.
 
@@ -199,7 +201,7 @@ toast(`A tarefa #${task.id} foi deletada com sucesso!`);
 fetchTasks()
 ```
 
-### AT 12: Implementar a ação de mover tarefa.
+### AT 12: Implementar a ação de mover tarefa. [ok]
 
 Esse botão deve se comunicar com a API e atualizar a tela com as alterações.
 
@@ -213,7 +215,7 @@ fetchTasks();
 
 ## Criar aplicações React com múltiplas páginas usando React Router
 
-### AT 13: Criar a rota `/`.
+### AT 13: Criar a rota `/`. [ok]
 
 Essa rota deve listas as tarefas separadas pelo seu estado ("Para fazer", "Em andamento", "Pronto")
 
@@ -233,7 +235,7 @@ const doing = tasks.filter((task) => task.step === "Em andamento");
 const done = tasks.filter((task) => task.step === "Pronto");
 ```
 
-### AT 14: Criar a rota `/criar-tarefa`.
+### AT 14: Criar a rota `/criar-tarefa`. [ok]
 
 Essa rota deve renderizar o formulário de criação de tarefas.
 

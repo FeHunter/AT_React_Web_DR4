@@ -14,8 +14,8 @@ export default function App() {
     <HistoryRouter history={history}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/CreateTask" element={<CreateTask />} />
-        <Route path="/EditTask" element={<EditTask />} />
+        <Route path="/criar-tarefa" element={<CreateTask />} />
+        <Route path="/editar-tarefa/:id" element={<EditTask />} />
       </Routes>
     </HistoryRouter>
   );

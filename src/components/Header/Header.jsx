@@ -13,7 +13,7 @@ export function Header() {
           <h1>Paçaro Tarefas, Version FR</h1>
         </span>
       </Link>
-      <Link to="/CreateTask">
+      <Link to="/criar-tarefa">
         <button className={style.btnAddTask}>Criar Tarefa </button>
       </Link>
     </header>

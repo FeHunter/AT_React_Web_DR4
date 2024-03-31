@@ -7,6 +7,10 @@ import style from "./CreateTask.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-simple-toasts";
+import { TextField } from "../components/Form/Input/TextField";
+import { SelectOption } from "../components/Form/Select/SelectOption";
+import { Button } from "../components/Form/Button/Button";
+import { ErrorMsg } from "../components/Form/ErrorMsg/ErrorMsg";
 
 export function CreateTask() {
 
@@ -78,42 +82,26 @@ export function CreateTask() {
       >
         <Form className={style.form}>
           <div className={style.inputCard}>
-            <Field
+            <TextField
               type="Text"
               name="title"
               placeholder="título..."
-              className={style.input}
             />
-            <ErrorMessage
-              name="title"
-              component="p"
-              className={style.erroMsg}
-            />
+            <ErrorMsg name="title" />
           </div>
           <div className={style.inputCard}>
-            <Field
+            <TextField
               type="text"
               name="description"
               placeholder="descrição..."
-              className={style.input}
             />
-            <ErrorMessage
-              name="description"
-              component="p"
-              className={style.erroMsg}
-            />
+            <ErrorMsg name="description" />
           </div>
           <div className={style.inputCard}>
-            <Field as="select" name="step" className={style.input}>
-              <option value="Para fazer">Para fazer</option>
-              <option value="Em andamento">Em Andamento</option>
-              <option value="Pronto">Pronto</option>
-            </Field>
-            <ErrorMessage name="step" component="p" className={style.erroMsg} />
+            <SelectOption name="step"/>
+            <ErrorMsg name="step" />
           </div>
-          <button type="submit" className={style.addButton}>
-            Adicionar
-          </button>
+          <Button type="submit" color="#ADD8E6" label="Adicionar" />
         </Form>
       </Formik>
     </div>

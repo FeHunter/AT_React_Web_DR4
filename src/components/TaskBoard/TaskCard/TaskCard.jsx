@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./TaskCard.module.css";
 
 export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
@@ -38,7 +39,9 @@ export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
           </span>
           
         )}
-        <button className={style.button} onClick={edit}>Editar</button>
+        <Link to={`/editar-tarefa/${task.id}`}>
+          <button className={style.button}>Editar</button> 
+        </Link>
         <button className={style.button} onClick={deleteTask}>Deletar</button>
       </span>
     </div>

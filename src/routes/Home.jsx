@@ -132,11 +132,6 @@ export function Home() {
     }
     toast(`A tarefa #${task.id} foi deletada com sucesso!`);
   };
-
-  const editTask = (task)=>{
-    const id = task.id;
-    navigate('/EditTask', {state: { id }});
-  }
   
 
   return (
@@ -152,7 +147,6 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
-                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))
@@ -168,7 +162,6 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
-                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))
@@ -184,7 +177,6 @@ export function Home() {
                 task={task}
                 stepLeft={() => changeStepLeft(task)}
                 stepRight={() => changeStepRight(task)}
-                editTask={editTask}
                 deleteTask={()=> removerTask(task)}
               />
             ))

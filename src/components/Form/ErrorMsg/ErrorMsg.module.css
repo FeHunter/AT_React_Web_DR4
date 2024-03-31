@@ -1,0 +1,7 @@
+.error {
+    font-size: 1em;
+    color: red;
+    padding: 2px;
+    text-decoration: underline;
+    font-style: italic;
+}

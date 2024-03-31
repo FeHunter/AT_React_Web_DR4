@@ -1,15 +1,19 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Formik, Form } from "formik";
+import { useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { Header } from "../components/Header/Header";
 import style from "./EditTask.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-simple-toasts";
+import { TextField } from "../components/Form/Input/TextField";
+import { SelectOption } from "../components/Form/Select/SelectOption";
+import { Button } from "../components/Form/Button/Button";
+import { ErrorMsg } from "../components/Form/ErrorMsg/ErrorMsg";
 
 export function EditTask() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const {id} = useParams();
 
   const user = "felipe-rodrigues";
   const api = `https://pacaro-tarefas.netlify.app/api/${user}/`;
@@ -25,10 +29,10 @@ export function EditTask() {
 
   useEffect(() => {
     load();
-  }, [task]);
+  }, []);
 
   const load = async () => {
-    const taskId = location.state.id;
+    const taskId = id;
     const request = await axios.get(`${api}${tasks}/${taskId}`);
     setTask(request.data);
   };
@@ -79,42 +83,28 @@ export function EditTask() {
         <Form className={style.form}>
             <h2 className={style.title}>Editar tarefa #{task.id}</h2>
             <div className={style.inputCard}>
-                <Field
-                    type="Text"
-                    name="title"
-                    placeholder="título..."
-                    className={style.input}
+                <TextField
+                  type="Text"
+                  name="title"
+                  placeholder="título..."
+                  className={style.input}
                 />
-                <ErrorMessage
-                    name="title"
-                    component="p"
-                    className={style.erroMsg}
-                />
+                <ErrorMsg name="title" />
             </div>
             <div className={style.inputCard}>
-                <Field
-                    type="text"
-                    name="description"
-                    placeholder="descrição..."
-                    className={style.input}
+                <TextField
+                  type="text"
+                  name="description"
+                  placeholder="descrição..."
+                  className={style.input}
                 />
-                <ErrorMessage
-                    name="description"
-                    component="p"
-                    className={style.erroMsg}
-                />
+                <ErrorMsg name="description" />
             </div>
             <div className={style.inputCard}>
-                <Field as="select" name="step" className={style.input}>
-                <option value="Para fazer">Para fazer</option>
-                <option value="Em andamento">Em Andamento</option>
-                <option value="Pronto">Pronto</option>
-                </Field>
-                <ErrorMessage name="step" component="p" className={style.erroMsg} />
+                <SelectOption name="step"/>
+                <ErrorMsg name="step" />
             </div>
-            <button type="submit" className={style.addButton}>
-                Atualizar
-            </button>
+            <Button type="submit" color="#F4CCCC" label="Atualizar" />
         </Form>
       </Formik>
     </div>
