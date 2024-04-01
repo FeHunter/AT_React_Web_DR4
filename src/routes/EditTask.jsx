@@ -10,6 +10,7 @@ import { TextField } from "../components/Form/Input/TextField";
 import { SelectOption } from "../components/Form/Select/SelectOption";
 import { Button } from "../components/Form/Button/Button";
 import { ErrorMsg } from "../components/Form/ErrorMsg/ErrorMsg";
+import TaskEditComponent from "../components/EditTaskClass";
 
 export function EditTask() {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ export function EditTask() {
   class LoadAPI extends Component {
     constructor(props){
       super(props);
-    }
+  }
     
     componentDidMount(){
       load();
@@ -82,6 +83,7 @@ export function EditTask() {
       
       {/* Componente de classe usando o ( componentDidMount ) */}
       <LoadAPI />
+      <TaskEditComponent id={id} navigate={navigate} task={task} />
 
       <Header />
       <Formik
@@ -89,7 +91,10 @@ export function EditTask() {
         validationSchema={validateSchema}
         onSubmit={(values) => {
           values.createdAt = new Date().toISOString();
-          sendData(values);
+          // sendData(values);
+          // console.log(formValues)
+          setTask(values);
+          
         }}
         enableReinitialize={true}
       >

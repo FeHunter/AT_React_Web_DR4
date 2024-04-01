@@ -106,7 +106,7 @@ No caso desta disciplina, são quatro competências com quatro itens de rubrica 
 ## Desenvolver aplicações que respondam à eventos com a atualização da interface
 
 #### AT 1: Criar e utilizar ao menos um componente de classe; [ok]
-#### AT 2: Utilizar ao menos um `setState` em um componente de classe; [ok]
+#### AT 2: Utilizar ao menos um `setState` em um componente de classe;
 #### AT 3: Utilizar ao menos uma vez o método de ciclo de vida `componentDidMount` em um componente de classe; [ok]
 #### AT 4: Utilizar ao menos uma vez o método de ciclo de vida `componentDidUpdate` em um componente de classe.
 
