@@ -1,10 +1,9 @@
 import style from './Button.module.css';
 
-export function Button ({label, color, type}){
+export function Button ({label, type}){
     return (
         <button
             type={type}
-            style={{backgroundColor: color}}
             className={style.button}
         >
             {label}

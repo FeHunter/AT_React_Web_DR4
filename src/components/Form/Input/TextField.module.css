@@ -6,6 +6,6 @@
 }
 
 .input:focus {
-    color: gray;
+    color: #F99417;
     border: 1px solid black;
 }

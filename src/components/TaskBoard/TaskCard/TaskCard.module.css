@@ -1,16 +1,14 @@
 .card {
   width: 90%;
-  height: 140px;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 80% 20%;
   grid-template-areas: 'infos' 'buttons';
   flex-direction: column;
-  background-color: #C9E2C7;
+  background-color: #393E46;
   margin: 20px 0px;
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px gray;
+  padding: 2% 3%;
+  color: white;
 }
 
 .infos {
@@ -20,12 +18,13 @@
 }
 
 .infos h2 {
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 3% 0px;
 }
 .infos .id {
   font-style: italic;
-  color: #FFFFF0;
+  color: #F99417;
   text-align: right;
 }
 
@@ -36,17 +35,30 @@
   justify-content: space-between;
 }
 
-.button {
+.button, .buttonLeftRight {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F8F8FF;
-  padding: 2px;
-  width: 60px;
-  height: 25px;
+  color: rgb(68, 68, 68);
+  padding: 2%;
+  margin: 1%;
   border-radius: 10px;
+  background-color: #929AAB;
 }
-.button:hover {
+
+.button {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.buttonLeftRight {
+  width: 50%;
+  flex-grow: 0;
+}
+
+.button:hover, .buttonLeftRight:hover {
   cursor: pointer;
-  background-color: #FAEBD7;
+  background-color: #EEEEEE;
+  color: #F99417;
 }
+

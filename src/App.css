@@ -1,11 +1,7 @@
 * {
   font-size: 1em;
-  font-family: 'Arial';
+  font-family: "Roboto Mono", monospace;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-main {
-  background-color: #333333;
 }

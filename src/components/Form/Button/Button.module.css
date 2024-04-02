@@ -1,12 +1,16 @@
 .button {
-    width: 70%;
+    width: 50%;
     padding: 10px;
     border-radius: 10px;
     font-weight: bold;
+    background-color: #393E46;
+    transition: .2s;
+    color: white;
 }
 
 .button:hover {
-    background-color: #C9E2C7 !important;
-    color: white;
-    box-shadow: 5px 5px 10px #ADD8E6;
+    background-color: #393E46;
+    color: #F99417;
+    box-shadow: 2px 2px 5px #F99417;
+    transition: .2s;
 }

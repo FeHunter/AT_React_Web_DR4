@@ -3,15 +3,26 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: #F8F8FF;
-  font-size: 1.2em;
+  background-color: #393E46;
+  font-size: 1.6em;
+}
+
+.buttonArea {
+  width: 20%;
 }
 
 .btnAddTask {
+  width: 100%;
   padding: 5px;
   border-radius: 5px;
-  background-color: #ADD8E6;
+  background-color: #929AAB;
+  color: white;
 }
 .btnAddTask:hover {
-  background-color: #FFFFF0;
+  background-color: #EEEEEE;
+  color: #F99417;
+}
+
+.title {
+  color: white;
 }

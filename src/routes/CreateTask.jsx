@@ -101,7 +101,7 @@ export function CreateTask() {
             <SelectOption name="step"/>
             <ErrorMsg name="step" />
           </div>
-          <Button type="submit" color="#ADD8E6" label="Adicionar" />
+          <Button type="submit" label="Adicionar" />
         </Form>
       </Formik>
     </div>

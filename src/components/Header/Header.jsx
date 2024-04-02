@@ -8,12 +8,12 @@ export function Header() {
         <span style={{ display: "flex", alignItems: "center" }}>
           <i
             class="fa-solid fa-dove"
-            style={{ color: "#ADD8E6", fontSize: "2em", marginRight: "20px" }}
+            style={{ color: "#F99417", fontSize: "2em", marginRight: "20px" }}
           ></i>
-          <h1>Paçaro Tarefas, Version FR</h1>
+          <h1 className={style.title}>Paçaro Tarefas, Version FR</h1>
         </span>
       </Link>
-      <Link to="/criar-tarefa">
+      <Link to="/criar-tarefa" className={style.buttonArea}>
         <button className={style.btnAddTask}>Criar Tarefa </button>
       </Link>
     </header>

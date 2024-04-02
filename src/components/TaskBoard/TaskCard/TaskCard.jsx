@@ -37,32 +37,32 @@ export function TaskCard({ task, stepLeft, stepRight, deleteTask, editTask }) {
       <span className={style.buttons}>
         {task.step === "Para fazer" && (
           // Move para direita
-          <span className={style.button} onClick={stepRight}>
+          <span className={style.buttonLeftRight} onClick={stepRight}>
             <i class="fa-solid fa-right-long"></i>
           </span>
         )}
         {task.step === "Em andamento" && (
           // Move dereita e esquerda
           <>
-            <span className={style.button} onClick={stepLeft}>
+            <span className={style.buttonLeftRight} onClick={stepLeft}>
               <i class="fa-solid fa-left-long"></i>
             </span>
-              <span className={style.button} onClick={stepRight}>
+              <span className={style.buttonLeftRight} onClick={stepRight}>
               <i class="fa-solid fa-right-long"></i>
             </span>
           </>
         )}
         {task.step === "Pronto" && (
           // Move para esquerda
-          <span className={style.button} onClick={stepLeft}>
+          <span className={style.buttonLeftRight} onClick={stepLeft}>
             <i class="fa-solid fa-left-long"></i>
           </span>
           
         )}
-        <Link to={`/editar-tarefa/${task.id}`}>
-          <button className={style.button}>Editar</button> 
+        <Link to={`/editar-tarefa/${task.id}`} className={style.button}>
+          <button>Editar</button> 
         </Link>
-        <DeleteButton  callFunction={deleteTask} />
+        <DeleteButton  callFunction={deleteTask}/>
       </span>
     </div>
   );
