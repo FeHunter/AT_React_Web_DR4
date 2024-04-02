@@ -83,48 +83,8 @@ export function EditTask() {
       
       {/* Componente de classe usando o ( componentDidMount ) */}
       <LoadAPI />
-      <TaskEditComponent id={id} navigate={navigate} task={task} />
-
       <Header />
-      <Formik
-        initialValues={task}
-        validationSchema={validateSchema}
-        onSubmit={(values) => {
-          values.createdAt = new Date().toISOString();
-          // sendData(values);
-          // console.log(formValues)
-          setTask(values);
-          
-        }}
-        enableReinitialize={true}
-      >
-        <Form className={style.form}>
-            <h2 className={style.title}>Editar tarefa #{task.id}</h2>
-            <div className={style.inputCard}>
-                <TextField
-                  type="Text"
-                  name="title"
-                  placeholder="título..."
-                  className={style.input}
-                />
-                <ErrorMsg name="title" />
-            </div>
-            <div className={style.inputCard}>
-                <TextField
-                  type="text"
-                  name="description"
-                  placeholder="descrição..."
-                  className={style.input}
-                />
-                <ErrorMsg name="description" />
-            </div>
-            <div className={style.inputCard}>
-                <SelectOption name="step"/>
-                <ErrorMsg name="step" />
-            </div>
-            <Button type="submit" color="#F4CCCC" label="Atualizar" />
-        </Form>
-      </Formik>
+      <TaskEditComponent id={id} navigate={navigate} task={task} />
     </div>
   );
 }
